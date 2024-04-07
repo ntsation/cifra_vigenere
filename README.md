@@ -1,35 +1,67 @@
-# Implementação da Cifra Vigenere
-Este é um simples código em Python que implementa a cifra de Vigenere para criptografar e descriptografar mensagens. A cifra de Vigenere é um método clássico de criptografia que utiliza uma chave para realizar a cifragem e decifragem de textos.
+# Cifra de Vigenère
 
-## Funções
-- `encrypt_vigenere` (plain_text, key): 
-Esta função recebe um texto claro (plain_text) e uma chave (key) como entrada e retorna o texto criptografado usando a cifra de Vigenere.
+Este é um programa Python que implementa a cifra de Vigenère para criptografar e descriptografar um texto usando uma chave. A cifra de Vigenère é uma técnica de criptografia polialfabética que utiliza uma série de diferentes cifras de César com base nas letras de uma palavra-chave.
 
-- `decrypt_vigenere` (encrypted_text, key):
-Esta função recebe um texto criptografado (encrypted_text) e uma chave (key) como entrada e retorna o texto descriptografado usando a cifra de Vigenere.
+## Funcionalidades
+
+- **criptografar(texto, chave):** Esta função recebe um texto e uma chave como entrada e retorna o texto criptografado.
+- **descriptografar(texto_criptografado, chave):** Esta função recebe um texto criptografado e a chave correspondente como entrada e retorna o texto descriptografado.
+
+## Como usar
+
+1. Defina o texto que deseja criptografar na variável `texto`.
+2. Escolha uma ou mais chaves e defina-as na lista `chave_criptografia`.
+3. Execute o programa. Ele criptografará o texto usando cada chave da lista `chave_criptografia` e depois descriptografará usando as mesmas chaves em ordem reversa.
+4. O texto original, o texto criptografado com cada chave e o texto descriptografado serão exibidos como saída.
 
 ## Exemplo de Uso
-- `text_to_encrypt` = "Hello, World!"
 
-- `encryption_key` = "KEY"
+```python
+texto = "Um exemplo de texto para ser criptografado usando a cifra de Vigenere."
+chave_criptografia = ["CRYPTO", "SEGURANCA", "PROTECAO"]
 
+print("Texto original:")
+print(texto)
 
-### 1. Criptografar o texto
+texto_criptografado = texto
+
+for chave in chave_criptografia:
+    texto_criptografado = criptografar(texto_criptografado, chave)
+    print("\nUsando a chave:", chave)
+    print("Texto criptografado:")
+    print(texto_criptografado)
+
+texto_descriptografado = texto_criptografado
+
+for chave in reversed(chave_criptografia):
+    texto_descriptografado = descriptografar(texto_descriptografado, chave)
+
+print("\nTexto descriptografado:")
+print(texto_descriptografado)
 ```
-encrypted_text = encrypt_vigenere(text_to_encrypt, encryption_key)
+## Resultado da Criptografia
 
-print(f"Texto criptografado: {encrypted_text}")
+- Texto original:
 ```
-### 2. Descriptografar o texto
+Um exemplo de texto para ser criptografado usando a cifra de Vigenere.
 ```
-decrypted_text = decrypt_vigenere(encrypted_text, encryption_key)
+- Usando a chave: CRYPTO
+ 
+    Texto criptografado:
+```
+Vr gkiqqnq of uukwu sxvtg vksyi fzeouigyxa nquwrk a ezbhrl enl Cwzjwdvd.
+```
 
-print(f"Texto descriptografado: {decrypted_text}")
-```
-Neste exemplo, o texto "Hello, World!" é criptografado com a chave "KEY" e depois descriptografado para verificar a reversibilidade do processo.
+- Usando a chave: SEGURANCA
 
-# Observações
-A implementação assume que a chave e o texto claro contêm apenas caracteres alfabéticos (letras) e são case-sensitive.
-Caracteres não alfabéticos no texto claro são preservados na cifragem/des cifragem.
-Este código pode ser utilizado como ponto de partida para experimentação com cifras de Vigenere em projetos mais amplos de criptografia.
-Sinta-se à vontade para utilizar, modificar e compartilhar conforme necessário!
+    Texto criptografado:
+```
+Zw mwqntmw sh zqjks zxmvj zpikp aizdunlqvn fsebrc w hkmmsb kof Duhycskh.
+```
+
+- Usando a chave: PROTECAO
+
+    Texto criptografado:
+```    
+Sv kjtrbvrb iq rwimy jxues tmdvk ijouwyodpo czrbpt e bwqpzi dgp Ovnvzrwl.
+```
