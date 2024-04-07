@@ -1,47 +1,60 @@
-def encrypt_vigenere(plain_text, key):
-    encrypted_text = ""
-    key_length = len(key)
+def criptografar(texto, chave):
+    texto_criptografado = ""
+    tamanho_chave = len(chave)
 
-    for i in range(len(plain_text)):
-        char = plain_text[i]
-        if char.isalpha():
-            key_char = key[i % key_length]
-            key_shift = ord(key_char.upper()) - ord('A')
+    for i in range(len(texto)):
+        caractere = texto[i]
+        if caractere.isalpha():
+            caractere_chave = chave[i % tamanho_chave]
+            deslocamento_chave = ord(caractere_chave.upper()) - ord('A')
 
-            if char.isupper():
-                encrypted_text += chr((ord(char) + key_shift - ord('A')) % 26 + ord('A'))
+            if caractere.isupper():
+                texto_criptografado += chr((ord(caractere) + deslocamento_chave - ord('A')) % 26 + ord('A'))
             else:
-                encrypted_text += chr((ord(char) + key_shift - ord('a')) % 26 + ord('a'))
+                texto_criptografado += chr((ord(caractere) + deslocamento_chave - ord('a')) % 26 + ord('a'))
         else:
-            encrypted_text += char
+            texto_criptografado += caractere
 
-    return encrypted_text
+    return texto_criptografado
 
-def decrypt_vigenere(encrypted_text, key):
-    decrypted_text = ""
-    key_length = len(key)
+def descriptografar(texto_criptografado, chave):
+    texto_descriptografado = ""
+    tamanho_chave = len(chave)
 
-    for i in range(len(encrypted_text)):
-        char = encrypted_text[i]
-        if char.isalpha():
-            key_char = key[i % key_length]
-            key_shift = ord(key_char.upper()) - ord('A')
+    for i in range(len(texto_criptografado)):
+        caractere = texto_criptografado[i]
+        if caractere.isalpha():
+            caractere_chave = chave[i % tamanho_chave]
+            deslocamento_chave = ord(caractere_chave.upper()) - ord('A')
 
-            if char.isupper():
-                decrypted_text += chr((ord(char) - key_shift - ord('A')) % 26 + ord('A'))
+            if caractere.isupper():
+                texto_descriptografado += chr((ord(caractere) - deslocamento_chave - ord('A')) % 26 + ord('A'))
             else:
-                decrypted_text += chr((ord(char) - key_shift - ord('a')) % 26 + ord('a'))
+                texto_descriptografado += chr((ord(caractere) - deslocamento_chave - ord('a')) % 26 + ord('a'))
         else:
-            decrypted_text += char
+            texto_descriptografado += caractere
 
-    return decrypted_text
+    return texto_descriptografado
 
 # Exemplo de uso:
-text_to_encrypt = "Hello, World!"
-encryption_key = "N"
+texto = "Um exemplo de texto para ser criptografado usando a cifra de Vigenere."
+chave_criptografia = ["CRYPTO", "SEGURANCA", "PROTECAO"]
 
-encrypted_text = encrypt_vigenere(text_to_encrypt, encryption_key)
-print(f"Texto criptografado: {encrypted_text}")
+print("Texto original:")
+print(texto)
 
-decrypted_text = decrypt_vigenere(encrypted_text, encryption_key)
-print(f"Texto descriptografado: {decrypted_text}")
+texto_criptografado = texto
+
+for chave in chave_criptografia:
+    texto_criptografado = criptografar(texto_criptografado, chave)
+    print("\nUsando a chave:", chave)
+    print("Texto criptografado:")
+    print(texto_criptografado)
+
+texto_descriptografado = texto_criptografado
+
+for chave in reversed(chave_criptografia):
+    texto_descriptografado = descriptografar(texto_descriptografado, chave)
+
+print("\nTexto descriptografado:")
+print(texto_descriptografado)
