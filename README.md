@@ -39,29 +39,35 @@ for chave in reversed(chave_criptografia):
 print("\nTexto descriptografado:")
 print(texto_descriptografado)
 ```
+
 ## Resultado da Criptografia
 
 - Texto original:
-```
+
+```pt-br
 Um exemplo de texto para ser criptografado usando a cifra de Vigenere.
 ```
+
 - Usando a chave: CRYPTO
- 
+
     Texto criptografado:
-```
+
+```text
 Vr gkiqqnq of uukwu sxvtg vksyi fzeouigyxa nquwrk a ezbhrl enl Cwzjwdvd.
 ```
 
 - Usando a chave: SEGURANCA
 
     Texto criptografado:
-```
+
+```text
 Zw mwqntmw sh zqjks zxmvj zpikp aizdunlqvn fsebrc w hkmmsb kof Duhycskh.
 ```
 
 - Usando a chave: PROTECAO
 
     Texto criptografado:
-```    
+
+```text
 Sv kjtrbvrb iq rwimy jxues tmdvk ijouwyodpo czrbpt e bwqpzi dgp Ovnvzrwl.
 ```
