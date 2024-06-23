@@ -9,13 +9,16 @@ def criptografar(texto, chave):
             deslocamento_chave = ord(caractere_chave.upper()) - ord('A')
 
             if caractere.isupper():
-                texto_criptografado += chr((ord(caractere) + deslocamento_chave - ord('A')) % 26 + ord('A'))
+                texto_criptografado += chr(
+                    (ord(caractere) + deslocamento_chave - ord('A')) % 26 + ord('A'))
             else:
-                texto_criptografado += chr((ord(caractere) + deslocamento_chave - ord('a')) % 26 + ord('a'))
+                texto_criptografado += chr((ord(caractere) +
+                                           deslocamento_chave - ord('a')) % 26 + ord('a'))
         else:
             texto_criptografado += caractere
 
     return texto_criptografado
+
 
 def descriptografar(texto_criptografado, chave):
     texto_descriptografado = ""
@@ -28,13 +31,16 @@ def descriptografar(texto_criptografado, chave):
             deslocamento_chave = ord(caractere_chave.upper()) - ord('A')
 
             if caractere.isupper():
-                texto_descriptografado += chr((ord(caractere) - deslocamento_chave - ord('A')) % 26 + ord('A'))
+                texto_descriptografado += chr((ord(caractere) -
+                                              deslocamento_chave - ord('A')) % 26 + ord('A'))
             else:
-                texto_descriptografado += chr((ord(caractere) - deslocamento_chave - ord('a')) % 26 + ord('a'))
+                texto_descriptografado += chr((ord(caractere) -
+                                              deslocamento_chave - ord('a')) % 26 + ord('a'))
         else:
             texto_descriptografado += caractere
 
     return texto_descriptografado
+
 
 # Exemplo de uso:
 texto = "Um exemplo de texto para ser criptografado usando a cifra de Vigenere."
